@@ -3,38 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WEB KEY HOANGPHU</title>
+<title>HoangPhu Key System</title>
 
 <style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui, -apple-system, sans-serif;
+}
+
 body{
-    margin:0;
-    background:black;
-    font-family:monospace;
-    overflow:hidden;
-    color:#00ffcc;
+  background:#0f172a;
+  color:white;
 }
 
-/* nền hacker */
-canvas{
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:-1;
+/* container */
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+  text-align:center;
 }
 
-/* glitch */
-.glitch{
-    font-size:50px;
-    font-weight:bold;
-    position:relative;
-    animation:glitch 1s infinite;
-    text-shadow:0 0 10px #00ffcc;
+/* logo */
+.logo{
+  font-size:30px;
+  font-weight:600;
+  margin-bottom:10px;
 }
 
-@keyframes glitch{
-    0%{left:0}
-    20%{left:3px}
-    40%{left:-3px}
+.sub{
+  color:#94a3b8;
+  margin-bottom:40px;
+}
+
+/* key box */
+.key-box{
+  background:#111827;
+  border:1px solid #1e293b;
+  border-radius:12px;
+  padding:30px;
+  margin:30px 0;
+}
+
+.key{
+  font-size:24px;
+  font-weight:600;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+
+/* button */
+.btn{
+  background:#2563eb;
+  border:none;
+  padding:12px 25px;
+  border-radius:8px;
+  color:white;
+  cursor:pointer;
+  transition:0.2s;
+  font-size:15px;
+}
+
+.btn:hover{
+  background:#1d4ed8;
+}
+
+/* support */
+.support{
+  margin-top:40px;
+}
+
+.link{
+  color:#60a5fa;
+  text-decoration:none;
+  margin:10px;
+  display:inline-block;
+}
+
+.footer{
+  margin-top:60px;
+  color:#64748b;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">HoangPhu Key System</div>
+<div class="sub">Secure • Fast • Professional</div>
+
+<div class="key-box">
+  <div id="key" class="key">Loading...</div>
+  <button class="btn" onclick="copyKey()">Copy Key</button>
+</div>
+
+<div class="support">
+  <a href="https://zalo.me/0336649264" class="link">Zalo hỗ trợ</a>
+  <a href="https://www.facebook.com/share/1FE5oZ641a/" class="link">Facebook</a>
+</div>
+
+<div class="footer">
+  © 2026 HoangPhu. All rights reserved.
+</div>
+
+</div>
+
+<script>
+// tạo key
+function randomKey(){
+  let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let result="Free-";
+  for(let i=0;i<10;i++){
+    result+=chars.charAt(Math.floor(Math.random()*chars.length));
+  }
+  return result;
+}
+
+let key=randomKey();
+document.getElementById("key").innerText=key;
+
+// copy
+function copyKey(){
+  navigator.clipboard.writeText(key);
+  alert("Đã copy key!");
+}
+</script>
+
+</body>
+</html>    40%{left:-3px}
     60%{left:3px}
     80%{left:-3px}
     100%{left:0}
